@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+    <div id="main" class="main">       
+        <nav>
+            <a href="/feed" class="logo"><image src="/images/jiuk9.jpg"></image></a>
+            <ul>
+                <li><a href="/feed">Home</a></li>
+                <li><a href="profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="profileCard">       
+            <form id="hidden" action="/fileupload" enctype="multipart/form-data" method="post">
+                <input type="file" name="image">
+            </form>
+            <div class="editpic" >
+                <i  id ="uploadicon" class="ri-pencil-fill"></i>
+                <div class="profilepic">
+                    <img src="/uploads/<%= user.profileImage %>" alt="profile pic">
+                </div>
+            </div>
+           <h1><%= user.fullname %></h1>
+           <h3>@<%= user.username %></h3>
+           <section>
+                <input type="submit" value="Edit" class="btn" id="edit">
+                <input type="submit" value="Post" class="btn" id="postbtn">
+           </section>           
+        </div>
+
+        <hr style ="margin-block:1vh; color: rgb(143, 60, 60); opacity: 0.1;"></hr>
+    
+<!--  for showing post -->
+        <div class="container-div">
+            <% user.posts.forEach(function(elem){ %>
+            <% let post = elem._id %>
+            <a  href="/show/<%= post %>" class="post-card" style="text-decoration: none;color:white; font-weight: lighter;">
+            <div class="card">
+                <img class="img-card" src="/uploads/<%= elem.image %>">
+                <figcaption><%= elem.title %></figcaption>
+            </div>
+            </a>
+            <% }) %>
+        </div>  
+
+<!-- dialog box for creating post pop up -->   
+    <dialog class="modal" id="pop">
+            <form action= "/createpost" class="post" method="post" enctype="multipart/form-data">
+                <input type="file" placeholder="choose file" name="postimage">
+                <input type="text" placeholder="Title" name="title">
+                <textarea placeholder="Description" name="description"></textarea>
+                <div class="btnss">
+                    <input type="submit"  style="display:inline " value="Creat Post" id="submit1">
+                    <input type="button" style="display:inline " value="Cancle" id="close">
+                </div>
+            </form>
+    </dialog>
+
+</body>
+<script>
+    document.querySelector("#uploadicon").addEventListener("click", function(){
+        document.querySelector("#hidden input").click();
+    });
+     document.querySelector("#hidden input").addEventListener("change",function(){
+         document.querySelector("#hidden").submit();
+     }) ;
+
+    document.querySelector("#postbtn").addEventListener("click",()=>{
+        document.querySelector(".modal").showModal();
+    });
+   document.querySelector("#close").addEventListener("click",()=>{
+        document.querySelector(".modal").close();
+    });
+    document.querySelector("#submit1").addEventListener("click",()=>{
+        document.querySelector(".modal").close();
+    });
+
+    document.querySelector(".post-card").addEventListener("click",()=>{
+        document.querySelector("#show-post-dialog").showModal();
+    });
+</script>
+</html>
+
+npx

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/showpost.css">
+</head>
+<body>
+    <div id="main" class="main">
+        <nav>
+            <a class="logo"><image src="/images/jiuk9.jpg"></image></a>
+            <ul>
+                <li><a href="/feed">Home</a></li>
+                <li><a href="profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+        
+        <section class="container">
+            <div id="show-pic-dialog">
+                <div class="show-pic">
+                    <img src="/uploads/<%= postdata.image %>">
+                </div>
+                <div class="pic-details">
+                    <div class="row">
+                        <!-- <i class="ri-download-2-line"></i> -->
+                        <% let post = postdata._id %>
+                        <a style="color:red; text-decoration:none;" href="/deletePost/<%= post %>" ><i  class="ri-delete-bin-line"></i></a>
+                    </div>
+                    <h2><%= postdata.title %></h1>
+                    <h2><%= postdata.description %></h2>
+                    <h2 class="username">@<%= postuser.username %></h2>
+                    <%- console.log(postdata._id) %>
+                </div>
+            </div>
+        </section> 
+    </div>
+</body>
+<script>
+</script>
+
+</html>
+

@@ -1,0 +1,48 @@
+       <div class="cards">
+            <% user.posts.forEach(function(elem){ %>
+            <% let post = elem._id %>
+            <a  href="/show/<%= post %>" class="post-card" style="text-decoration: none;color:white; font-weight: lighter;">
+            <!-- <div> -->
+                <div class="oneCard">
+                    <img id="image" class="cardimg" src="/uploads/<%= elem.image %>">
+                </div>
+                <figcaption><%= elem.title %></figcaption>
+            <!-- </div> -->
+            <!-- </a> -->
+            <% }) %>
+        </div> 
+
+
+
+
+                <div id="show-post-dialog" class="">
+            <!-- <div id="show-pic-dialog"> -->
+                <div class="showpic">
+                    <img src="/uploads/<%= postdata.image %>">
+                </div>
+                <div class="pic-details">
+                    <div class="row">
+                        <i class="ri-download-2-line"></i>
+                    </div>
+                    <h1><%= postdata.title %></h1>
+                    <h2><%= postdata.description %></h2>
+                    <h2>@<%= postuser.username %></h2>
+                </div>
+            <!-- </div> -->
+        </div> 
+
+
+
+
+               <!-- <div class="#show-pic-dialog"
+        <div class="modal">
+            <div class="carousel">
+                <div class="centered-container">
+                    <img src="/uploads/<%= postdata.image %>">
+                    <h1><%= postdata.title %></h1>
+                    <h2><%= postdata.description %></h2>
+                    <h2>@<%= postuser.username %></h2>
+                </div>
+            </div>      
+        </div> 
+        </div> -->

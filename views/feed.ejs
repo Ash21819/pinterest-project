@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <link rel="stylesheet" href="/stylesheets/layout.css">
+</head>
+<body>
+    <div id="main" class="main">
+        <nav>
+            <a class="logo"><image src="/images/jiuk9.jpg"></image></a>
+            <ul>
+                <li><a href="/feed">Home</a></li>
+                <li><a href="profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>     
+         <div class="container_grid">
+        <div class="carousel-images">
+            <% posts.forEach(function(elem){ %>
+            <% let post = elem._id %>
+            <a  href="/show/<%= post %>" class="post-card" style="text-decoration: none;color:white; font-weight: lighter;">
+                <div class="card_small card_exp">
+                    <img class="img_card" src="/uploads/<%= elem.image %>" alt=""/>
+                    <figcaption><%= elem.title %></figcaption>
+                </div>
+            </a>    
+            <% }) %>
+        </div>  
+ </div>         
+
+</body>
+<script src="/javascripts/layout.js" crossorigin="anonymous"></script>
+</html>
+
